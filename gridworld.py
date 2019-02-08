@@ -15,8 +15,8 @@ class Gridworld:
         self.transition_penalty = transition_penalty
 
     def _clip_loc_to_grid(self, x, y):
-        new_x = min(max(0, x), dim - 1)
-        new_y = min(max(0, y), dim - 1)
+        new_x = min(max(0, x), self.dim - 1)
+        new_y = min(max(0, y), self.dim - 1)
         return new_x, new_y
 
     def get_reward(self, x, y):
@@ -58,7 +58,7 @@ class Gridworld:
     def show_grid():
         pass
 
-    def get_true_q_values(self):
+    def get_true_q_values(self, gamma):
         pass
 
     def reset(self):
