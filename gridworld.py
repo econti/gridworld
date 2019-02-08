@@ -4,6 +4,7 @@ import numpy as np
 class Gridworld:
     def __init__(self, dim=5, final_reward=100, transition_penalty=-1):
         self.dim = dim
+        self.actions = ['L', 'R', 'U', 'D']
         self.flat_states = np.arange(dim * dim)
         self.state_grid = np.arange(dim * dim).reshape((dim, dim))
         self.terminal_state = self.flat_states[-1]
@@ -30,6 +31,10 @@ class Gridworld:
             state_feature_dict[state] = np.zeros(self.dim * self.dim)
             state_feature_dict[state][idx] = 1.0
         self.state_feature_dict = state_feature_dict
+
+    def random_step(self):
+        action = np.random.choice(self.actions)
+        return self.step(action)
 
     def step(self, action):
         """Actions: {'L', 'R', 'U', 'D'}"""
